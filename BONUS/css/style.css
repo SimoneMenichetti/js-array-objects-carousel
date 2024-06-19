@@ -54,9 +54,8 @@
     object-fit: contain;
   }
   
-  .carosello-control {
+  .thumbnails-control {
     position: absolute;
-    top: 50%;
     transform: translateY(-50%);
     background-color: transparent;
     border: none;
@@ -66,16 +65,17 @@
     cursor: pointer;
   }
   
-  .carosello-control:hover {
+  .thumbnails-control:hover {
     color: #fff;
   }
   
-  .carosello-control.prev {
+  .thumbnails .prev {
     left: 10px;
   }
   
-  .carosello-control.next {
+  .thumbnails .next {
     right: 10px;
+    top:0;
   }
   
   .carosello-item {
@@ -88,9 +88,11 @@
   }
   
   .thumbnails {
+    position: relative;
     display: flex;
     flex-direction: column;
     margin-left: 20px;
+    
   }
   
   .thumbnails img {

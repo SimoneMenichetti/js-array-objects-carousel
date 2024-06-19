@@ -87,38 +87,38 @@ const images = [
     });
 }
 
-const itemContenuto  = document.getElementsByClassName("carosello-item");
-let activeItem = 0;
+    const itemContenuto  = document.getElementsByClassName("carosello-item");
+    let activeItem = 0;
 
-// Inserire la classe active al primo carosello-item
-itemContenuto[activeItem].classList.add("active");
+    // Inserire la classe active al primo carosello-item
+    itemContenuto[activeItem].classList.add("active");
 
-// Gestire il click sul bottone next
-const next = document.querySelector(".next");
-next.addEventListener("click", function() {
-    if (activeItem < images.length - 1) {
-        itemContenuto[activeItem].classList.remove("active");
-        activeItem += 1;
-        itemContenuto[activeItem].classList.add("active");
-    } else {
-        itemContenuto[activeItem].classList.remove("active");
-        activeItem = 0;
-        itemContenuto[activeItem].classList.add("active");
-    }
-});
+    // Gestire il click sul bottone next
+    const next = document.querySelector(".next");
+    next.addEventListener("click", function() {
+        if (activeItem < images.length - 1) {
+            itemContenuto[activeItem].classList.remove("active");
+            activeItem += 1;
+            itemContenuto[activeItem].classList.add("active");
+        } else {
+            itemContenuto[activeItem].classList.remove("active");
+            activeItem = 0;
+            itemContenuto[activeItem].classList.add("active");
+        }
+    });
 
-// Gestire il click sul bottone prev
-const prev = document.querySelector(".prev");
-prev.addEventListener("click", function() {
-    if (activeItem > 0) {
-        itemContenuto[activeItem].classList.remove("active");
-        activeItem -= 1;
-        itemContenuto[activeItem].classList.add("active");
-    } else {
-        itemContenuto[activeItem].classList.remove("active");
-        activeItem = images.length - 1;
-        itemContenuto[activeItem].classList.add("active");
-    }
-});
-  
+    // Gestire il click sul bottone prev
+    const prev = document.querySelector(".prev");
+    prev.addEventListener("click", function() {
+        if (activeItem > 0) {
+            itemContenuto[activeItem].classList.remove("active");
+            activeItem -= 1;
+            itemContenuto[activeItem].classList.add("active");
+        } else {
+            itemContenuto[activeItem].classList.remove("active");
+            activeItem = images.length - 1;
+            itemContenuto[activeItem].classList.add("active");
+        }
+    });
+    
 
