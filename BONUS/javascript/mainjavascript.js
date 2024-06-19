@@ -3,8 +3,6 @@
 // Aggiungere le thumbnails (sottoforma di miniatura) ed al click attivare l’immagine corrispondente.
 // BONUS 2:
 // Aggiungere funzionalità di autoplay: dopo un certo periodo di tempo (3 secondi) l’immagine attiva dovrà cambiare alla successiva.
-// BONUS 3:
-// Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.
 
 
 const images = [ 
@@ -81,10 +79,12 @@ const images = [
 
 
     // Aggiunta evento click alla thumbnail per cambiare l'immagine attiva
-    thumbnailItem.addEventListener('click', function() {
+    thumbnailItem.addEventListener('click', 
+        function() {
         document.querySelector('.carosello-item.active').classList.remove('active');
         imagesItem.classList.add('active');
-    });
+        }
+    );
 }
 
     const itemContenuto  = document.getElementsByClassName("carosello-item");
@@ -93,32 +93,37 @@ const images = [
     // Inserire la classe active al primo carosello-item
     itemContenuto[activeItem].classList.add("active");
 
+
     // Gestire il click sul bottone next
     const next = document.querySelector(".next");
-    next.addEventListener("click", function() {
-        if (activeItem < images.length - 1) {
-            itemContenuto[activeItem].classList.remove("active");
-            activeItem += 1;
-            itemContenuto[activeItem].classList.add("active");
-        } else {
-            itemContenuto[activeItem].classList.remove("active");
-            activeItem = 0;
-            itemContenuto[activeItem].classList.add("active");
+    next.addEventListener("click", 
+        function() {
+            if (activeItem < images.length - 1) {
+                itemContenuto[activeItem].classList.remove("active");
+                activeItem += 1;
+                itemContenuto[activeItem].classList.add("active");
+            } else {
+                itemContenuto[activeItem].classList.remove("active");
+                activeItem = 0;
+                itemContenuto[activeItem].classList.add("active");
+            }
         }
-    });
+    );
 
     // Gestire il click sul bottone prev
     const prev = document.querySelector(".prev");
-    prev.addEventListener("click", function() {
-        if (activeItem > 0) {
-            itemContenuto[activeItem].classList.remove("active");
-            activeItem -= 1;
-            itemContenuto[activeItem].classList.add("active");
-        } else {
-            itemContenuto[activeItem].classList.remove("active");
-            activeItem = images.length - 1;
-            itemContenuto[activeItem].classList.add("active");
-        }
-    });
+    prev.addEventListener("click", 
+        function() {
+            if (activeItem > 0) {
+                itemContenuto[activeItem].classList.remove("active");
+                activeItem -= 1;
+                itemContenuto[activeItem].classList.add("active");
+            } else {
+                itemContenuto[activeItem].classList.remove("active");
+                activeItem = images.length - 1;
+                itemContenuto[activeItem].classList.add("active");
+            }
+        }   
+);
     
 
