@@ -56,26 +56,35 @@
   
   .thumbnails-control {
     position: absolute;
-    transform: translateY(-50%);
     background-color: transparent;
+    transform: translate(50%);
     border: none;
     color: gray;
     font-size: 2rem;
-    padding: 5px;
     cursor: pointer;
+    margin-right: 100px;
   }
   
   .thumbnails-control:hover {
     color: #fff;
   }
-  
-  .thumbnails .prev {
-    left: 10px;
+
+  .thumbnails-control, .prev{
+    transform: rotate(90deg);
+  }
+
+  .thumbnails-control, .next{
+    transform: rotate(-90deg);
   }
   
-  .thumbnails .next {
-    right: 10px;
-    top:0;
+  .thumbnails, .prev {
+    bottom: 0;
+    margin-left: 40px;
+  }
+  
+  .thumbnails, .next {
+    top: 0;
+    margin-left: 40px;
   }
   
   .carosello-item {
