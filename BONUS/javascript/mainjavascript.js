@@ -1,7 +1,10 @@
 
-//     BONUS 2:
-// Aggiungere la visualizzazione di tutte le thumbnails sulla destra dell’immagine grande attiva, come nello screenshot proposto. Tutte le miniature avranno un layer di opacità scura, tranne quella corrispondente all’immagine attiva, che invece avrà un bordo colorato. Al click delle frecce, oltre al cambio di immagine attiva, gestire il cambio di miniatura attiva.
-
+// BONUS 1:
+// Aggiungere le thumbnails (sottoforma di miniatura) ed al click attivare l’immagine corrispondente.
+// BONUS 2:
+// Aggiungere funzionalità di autoplay: dopo un certo periodo di tempo (3 secondi) l’immagine attiva dovrà cambiare alla successiva.
+// BONUS 3:
+// Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.
 
 
 const images = [ 
@@ -42,6 +45,9 @@ const images = [
 
         const itemsContenitore = document.querySelector(".carosello");
 
+        // prendiamo l elemento thumbnailcontenitore per l inserimento degli item e lo rendiamo globale
+        const thumbnailsContenitore = document.querySelector(".thumbnails");
+
 // 2
     // inizio ciclo for per estrapolazione degli elementi img
 
@@ -63,99 +69,56 @@ const images = [
                 </div>`;
                 // appendiamo dinamicamente
                 itemsContenitore.append(imagesItem);
+    
+
+     // Creazione elemento thumbnail
+     const thumbnailItem = document.createElement("img");
+    //  creazione riferimento per inserire i valori degli itemimg negli elementi dinamici 
+     thumbnailItem.src = itemImmagine.image;
+    //  aggiungiamo la class all elemento
+     thumbnailItem.classList.add('thumbnail-item');
+     thumbnailsContenitore.append(thumbnailItem);
+
+
+    // Aggiunta evento click alla thumbnail per cambiare l'immagine attiva
+    thumbnailItem.addEventListener('click', function() {
+        document.querySelector('.carosello-item.active').classList.remove('active');
+        imagesItem.classList.add('active');
+    });
+}
+
+const itemContenuto  = document.getElementsByClassName("carosello-item");
+let activeItem = 0;
+
+// Inserire la classe active al primo carosello-item
+itemContenuto[activeItem].classList.add("active");
+
+// Gestire il click sul bottone next
+const next = document.querySelector(".next");
+next.addEventListener("click", function() {
+    if (activeItem < images.length - 1) {
+        itemContenuto[activeItem].classList.remove("active");
+        activeItem += 1;
+        itemContenuto[activeItem].classList.add("active");
+    } else {
+        itemContenuto[activeItem].classList.remove("active");
+        activeItem = 0;
+        itemContenuto[activeItem].classList.add("active");
     }
+});
 
-
-        const itemContenuto  = document.getElementsByClassName("carosello-item");
-
-            // // verifica funzionamento
-
-            // console.log(itemContenuto);
-
-        let activeItem = 0;
-    // 7
-        // inserire la class active all " carosello-item"
-        itemContenuto [activeItem].classList.add("active");
-
-        // verifica funzionamento aggiunta classe activ al " carosello-item 0"
-            // console.log( itemCarosello[activeItem]);
-
-    // 8
-        // per dare la funzione di active all'interazione utente vado a selezionare il bottone next creando una const
-
-        const next = document.querySelector(".next");
-            // verifica funzionamento selezione in console
-            // console.log(next);
-
-       const prev= document.querySelector(".prev");
-        
-
-
-    // 9 gestire l evento click
-
-    next.addEventListener("click",
-        function() {
-
-            if(activeItem < images.length -1) {
-
-                // verificare se non siamo alla fine della lista immagini
-
-                
-
-                // eliminare l'active all item attivo
-                itemContenuto [activeItem].classList.remove("active");
-
-
-
-                // incremento valore item
-
-                activeItem +=1;
-
-
-                // inserire la classe active agli elementi corrispondenti all item aggiornato
-
-                itemContenuto [activeItem].classList.add("active");
-
-            } else {
-                // Se siamo alla fine della lista immagini, torna al primo
-                itemContenuto [activeItem].classList.remove("active");
-
-                activeItem = 0;
-
-                itemContenuto [activeItem].classList.add("active");
-
-            }
-
-        }
-
-    );
-
-    // BONUS 
-
-    prev.addEventListener('click', 
-        function() {
-            if (activeItem > 0) {
-                // Eliminare l'active dall'item attivo
-                itemContenuto [activeItem].classList.remove("active");
-        
-                // Decremento valore item
-                activeItem -= 1;
-        
-                // Inserire la classe active all'elemento corrispondente all'item aggiornato
-                itemContenuto [activeItem].classList.add("active");
-            } else {
-                // Se siamo all'inizio della lista immagini, torna all'ultimo
-                itemContenuto  [activeItem].classList.remove("active");
-                activeItem =  images.length - 1;
-                itemContenuto  [activeItem].classList.add("active");
-            }
-        }
-    );
-
-
- 
-
-
-
+// Gestire il click sul bottone prev
+const prev = document.querySelector(".prev");
+prev.addEventListener("click", function() {
+    if (activeItem > 0) {
+        itemContenuto[activeItem].classList.remove("active");
+        activeItem -= 1;
+        itemContenuto[activeItem].classList.add("active");
+    } else {
+        itemContenuto[activeItem].classList.remove("active");
+        activeItem = images.length - 1;
+        itemContenuto[activeItem].classList.add("active");
+    }
+});
   
 

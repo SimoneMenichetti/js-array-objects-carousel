@@ -1,100 +1,108 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-/* regole generali per centrare il container principale per il carosello e gli item img */
-body {
-    
+  }
+  
+  body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: black;
-    
-}
-
-h3, span{
-    color:white;
-     
+  }
+  
+  h3, span {
+    color: white;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
-    
-}
-
-h3{
+  }
+  
+  h3 {
     position: absolute;
     bottom: 5%;
     right: 0;
     margin-bottom: 70px;
-}
-
-span{
-    position: absolute; 
+  }
+  
+  span {
+    position: absolute;
     bottom: 0;
-    left: 20%; 
-   
-    
-}
-
-/* regole generali container carosello item */
-.carosello-container {
+    left: 20%;
+  }
+  
+  .carosello-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  
+  .carosello-container {
     position: relative;
     max-width: 600px;
     overflow: hidden;
     border: 2px solid gray;
     border-radius: 10px;
-    
-}
-
-.carosello {
+  }
+  
+  .carosello {
     position: relative;
     height: 100%;
-    
-}
-
-/* regole generali img */
-.carosello img {
-    max-width:400px;
+  }
+  
+  .carosello img {
+    max-width: 400px;
     object-fit: contain;
-
-}
-
-/* pannello di controllo del carosello  */
-.carosello-control {
+  }
+  
+  .carosello-control {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     background-color: transparent;
     border: none;
-    color:gray;
+    color: gray;
     font-size: 2rem;
     padding: 5px;
     cursor: pointer;
-    
-}
-
-.carosello-control:hover{
+  }
+  
+  .carosello-control:hover {
     color: #fff;
-}
-
-/*  controllo carosello indietro */
-.carosello-control.prev {
+  }
+  
+  .carosello-control.prev {
     left: 10px;
-}
-/* controllo carosello */
-.carosello-control.next {
+  }
+  
+  .carosello-control.next {
     right: 10px;
-}
-
-/* regole item carosello */
-
-.carosello-item {
+  }
+  
+  .carosello-item {
     display: none;
-   
-}
-
-/* display block all'active per js */
-.carosello-item.active {
+    position: relative;
+  }
+  
+  .carosello-item.active {
     display: block;
-}
+  }
+  
+  .thumbnails {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+  
+  .thumbnails img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .thumbnails img:hover {
+    border-color: white;
+  }
