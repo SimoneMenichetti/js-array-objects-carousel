@@ -94,36 +94,48 @@ const images = [
     itemContenuto[activeItem].classList.add("active");
 
 
-    // Gestire il click sul bottone next
-    const next = document.querySelector(".next");
-    next.addEventListener("click", 
+    // BONUS 2:
+    // Aggiungere funzionalità di autoplay: dopo un certo periodo di tempo (3 secondi) l’immagine attiva dovrà cambiare alla successiva.
+
+        //  Funzione per cambiare l'immagine attiva
+    function changeImage(next = true) {
+        itemContenuto[activeItem].classList.remove("active");
+
+        if (next) {
+            activeItem = (activeItem + 1) % images.length;
+        } else {
+            activeItem = (activeItem - 1 + images.length) % images.length;
+        }
+
+        itemContenuto[activeItem].classList.add("active");
+    }
+
+
+ 
+    // Gestire il click sul bottone prev
+    const prev = document.querySelector(".prev");
+     prev.addEventListener("click", 
         function() {
-            if (activeItem < images.length - 1) {
-                itemContenuto[activeItem].classList.remove("active");
-                activeItem += 1;
-                itemContenuto[activeItem].classList.add("active");
-            } else {
-                itemContenuto[activeItem].classList.remove("active");
-                activeItem = 0;
-                itemContenuto[activeItem].classList.add("active");
-            }
+            changeImage(false);
         }
     );
 
-    // Gestire il click sul bottone prev
-    const prev = document.querySelector(".prev");
-    prev.addEventListener("click", 
-        function() {
-            if (activeItem > 0) {
-                itemContenuto[activeItem].classList.remove("active");
-                activeItem -= 1;
-                itemContenuto[activeItem].classList.add("active");
-            } else {
-                itemContenuto[activeItem].classList.remove("active");
-                activeItem = images.length - 1;
-                itemContenuto[activeItem].classList.add("active");
+    // Gestire il click sul bottone next
+    const next = document.querySelector(".next");
+        next.addEventListener("click", 
+            function() {
+                changeImage(true);
             }
-        }   
-);
+    );
+
+    // Impostare l'autoplay per cambiare l'immagine ogni 3 secondi
+    setInterval(function() {
+        changeImage(true);
+    }, 3000);
+
+
+   
+
+
     
 
