@@ -89,6 +89,8 @@ const images = [
 
     const itemContenuto  = document.getElementsByClassName("carosello-item");
     let activeItem = 0;
+    let interval;
+    let direction = true; 
 
     // Inserire la classe active al primo carosello-item
     itemContenuto[activeItem].classList.add("active");
@@ -129,13 +131,40 @@ const images = [
     );
 
     // Impostare l'autoplay per cambiare l'immagine ogni 3 secondi
-    setInterval(function() {
-        changeImage(true);
+    // setInterval(function() {
+    //     changeImage(true);
+    // }, 3000);
+
+    
+// Funzione per iniziare l'autoplay
+function startAutoplay() {
+    stopAutoplay(); // Assicurarsi che non ci siano altri interval in esecuzione
+    interval = setInterval(function() {
+        changeImage(direction);
     }, 3000);
+}
 
+// Funzione per fermare l'autoplay
+function stopAutoplay() {
+    clearInterval(interval);
+}
 
-   
+// Gestire il click sul bottone start
+const startButton = document.querySelector(".start");
+startButton.addEventListener("click", startAutoplay);
 
+// Gestire il click sul bottone stop
+const stopButton = document.querySelector(".stop");
+stopButton.addEventListener("click", stopAutoplay);
 
+// Gestire il click sul bottone reverse
+const reverseButton = document.querySelector(".reverse");
+reverseButton.addEventListener("click", function() {
+    direction = !direction;
+    startAutoplay();
+});
+
+// Iniziare l'autoplay automaticamente
+startAutoplay();
     
 
