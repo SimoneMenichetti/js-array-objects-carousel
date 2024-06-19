@@ -16,6 +16,25 @@ body {
 
 h3, span{
     color:white;
+     
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    
+}
+
+h3{
+    position: absolute;
+    bottom: 5%;
+    right: 0;
+    margin-bottom: 100px;
+}
+
+span{
+    position: absolute; 
+    bottom: 0;
+    left: 20%; 
+   
+    
 }
 
 /* regole generali container carosello item */
@@ -36,7 +55,7 @@ h3, span{
 
 /* regole generali img */
 .carosello img {
-    max-width: 400px;
+    max-width:400px;
     object-fit: contain;
 
 }

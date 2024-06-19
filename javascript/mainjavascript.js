@@ -9,11 +9,12 @@ const images = [
     { 
         image: './img/01.webp',
         title: 'Marvel\'s Spiderman Miles Morale',
-        text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.', },
+        text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.',
+     },
 
      { 
         image: './img/02.webp',
-         title: 'Ratchet & Clank: Rift Apart',
+        title: 'Ratchet & Clank: Rift Apart',
         text: 'Go dimension-hopping with Ratchet and Clank as they take on an evil emperor from another reality.', 
     },
      { 
