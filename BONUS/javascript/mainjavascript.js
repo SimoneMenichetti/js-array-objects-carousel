@@ -48,26 +48,23 @@ const images = [
 
 // 2
     // inizio ciclo for per estrapolazione degli elementi img
-
-    for(let i = 0; i < images.length; i++) {
-    //    riciclo elemento itemimmagine 
-        let itemImmagine = images[i];
-        console.log(itemImmagine);
-    // creazione elemento da inserire riciclando 
+    images.forEach(itemImmagine => {
+        // Creazione dell'elemento da inserire dinamicamente
         const imagesItem = document.createElement("div");
-
-            imagesItem.classList.add('carosello-item');
-
-            imagesItem.innerHTML = 
-    // Trasformare la stringa dell immagine in un immagine effettiva 
-                `<div class="carosello">
-                    <img src="${itemImmagine.image}" alt="">
-                    <h3>${itemImmagine.title}</h3>
-                    <span> ${ itemImmagine.text}</span>
-                </div>`;
-                // appendiamo dinamicamente
-                itemsContenitore.append(imagesItem);
+        imagesItem.classList.add('carosello-item');
     
+        // Costruzione dell'HTML per ogni elemento immagine
+        imagesItem.innerHTML = `
+            <div class="carosello">
+                <img src="${itemImmagine.image}" alt="">
+                <h3>${itemImmagine.title}</h3>
+                <span>${itemImmagine.text}</span>
+            </div>
+        `;
+    
+        // Aggiunta dell'elemento al contenitore
+        itemsContenitore.append(imagesItem);
+   
 
      // Creazione elemento thumbnail
      const thumbnailItem = document.createElement("img");
@@ -85,7 +82,7 @@ const images = [
         imagesItem.classList.add('active');
         }
     );
-}
+} );
 
     const itemContenuto  = document.getElementsByClassName("carosello-item");
     let activeItem = 0;
